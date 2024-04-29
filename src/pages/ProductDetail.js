@@ -1,14 +1,17 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Row, Col } from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
 
-export const ProductDetail = () => {
+const ProductDetail = () => {
   let { id } = useParams();
+  console.log(id)
   const [product, setProduct] = useState(null);
   console.log(product)
+
   const getProductDetail = async () => {
     /* let url = `https://my-json-server.typicode.com/HeoSsaM/peachnlily/products/${id}`; */
     let url = `https://my-json-server.typicode.com/HwangJuneyeop/HMshop/products/${id}`;
+    /* let url = `http://localhost:5000/products/${id}`; */
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
@@ -31,10 +34,14 @@ export const ProductDetail = () => {
           <div className="choie">
             {product?.new === true ? "new product" : ""}
           </div>
-          
+
           <Button variant="dark">주문하기</Button>
-         </Col>
+        </Col>
       </Row>
     </div>
   )
 }
+
+
+export default ProductDetail
+

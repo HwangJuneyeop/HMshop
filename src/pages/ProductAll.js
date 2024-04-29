@@ -5,14 +5,15 @@ import { useSearchParams } from 'react-router-dom';
 
 const ProductAll = () => {
     const [productList, setProductList] = useState([]);
+    console.log(productList)
     const [query, setQuery] = useSearchParams();
     const [error, setError] = useState('');
 
     const getProducts = async () => {
         try {
             let searchQuery = query.get("q") || "";
-            /* let url = `http://localhost:5000/products?q=${searchQuery}`; */
-            let url= `https://my-json-server.typicode.com/HwangJuneyeop/HMshop/products/${searchQuery}`;
+            /* let url = `http://localhost:5000/products/?q=${searchQuery}` \;*/ 
+             let url= `https://my-json-server.typicode.com/HwangJuneyeop/HMshop/products/?q=${searchQuery}`;
             let response = await fetch(url);
             let data = await response.json();
             setProductList(data);

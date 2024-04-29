@@ -25,7 +25,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/product/:id"
+        <Route path="/products/:id"
           element={user ? <ProductDetail /> : <Navigate replace={true} to="/login" />} />
 
         <Route path="/login" element={!user ? <Login /> : <Navigate to="/" replace={true} />} />
